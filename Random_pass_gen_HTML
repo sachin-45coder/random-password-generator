@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="password.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Generate a <br><span>Random Password</span></h1>
+
+    <div class="display">
+        <input type="text" id="password" placeholder="Password">
+        <button onclick="copyPassword()">📋</button>
+    </div>
+
+    <button class="btn" onclick="generatePassword()"> Generate Password</button>
+</div>
+
+
+<script>
+
+function generatePassword() {
+
+    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+    let password = "";
+    let length = 12;
+
+    for(let i = 0; i < length; i++) {
+        let randomIndex = Math.floor(Math.random() * chars.length);
+        password += chars[randomIndex];
+    }
+
+    document.getElementById("password").value = password;
+}
+
+function copyPassword() {
+    let copyText = document.getElementById("password");
+    copyText.select();
+    document.execCommand("copy");
+    alert("Password Copied!");
+}
+
+</script>
+
+</body>
+</html>
